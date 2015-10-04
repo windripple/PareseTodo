@@ -51,6 +51,7 @@
                         var sale = obj.get('Sale');
                         var id = obj.get('inviteCode');
                         var va = obj.get('Valuable');
+                        var price = obj.get('price');
                         var modellist = modelid.toString().split(',');
                         var name = '</br>';
                         if (sale == null)
@@ -75,7 +76,7 @@
                                            name += res.result.userCards[i].rar + "★ " + res.result.userCards[i].preName + res.result.userCards[i].name +"</br>"
                                           }
                                     }
-                                    innerhtml += name + "</div></div>";
+                                    innerhtml += name + "<h4 class='text-right' style='color:red'>$"+price+"</h4></div></div>";
 
 
 
@@ -106,7 +107,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="color:white; font-family: Microsoft JhengHei;">玩家自賣 0進度 活動領石前10抽帳號</a>
+          <a class="navbar-brand" style="color:white; font-family: Microsoft JhengHei;">玩家自賣 0進度 首抽+活動領石10抽帳號</a>
         </div>
 
       </div>
