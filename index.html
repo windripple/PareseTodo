@@ -20,7 +20,7 @@
           var usd = Parse.Object.extend("userdata");
           var query = new Parse.Query(usd);
           query.limit(100000);
-          query.greaterThanOrEqualTo("Valuable", 1);
+          query.greaterThanOrEqualTo("Valuable", 3);
           query.find({
               success: function (list) {
                   for (var i = 0; i < list.length; i++) {
