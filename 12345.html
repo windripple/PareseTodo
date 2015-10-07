@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://shironeko.appbako.com/wiki/src/img/char/thum/card_20802230_0.png">
+
+    <title>白貓首抽帳號專賣</title>
+
+    <!-- Bootstrap core CSS -->
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+    <script src="js/vendor/holder.min.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+
+  </head>
+
+  <body>
+    <script>
+            Parse.$ = jQuery;
+            Parse.initialize("pGiNczoovDgDr8hOUMdG2D6dLzYxK3nFNIvuvFR7", "yI13wkVZtoBLlazdaJ5wDEjQXusVfD6Pwj5KnkGf");
+
+            var innerhtml = '';
+            var usd = Parse.Object.extend("userdata002");
+            var query = new Parse.Query(usd);
+            query.descending("Valuable");
+            query.limit(10000);
+            query.greaterThanOrEqualTo("Valuable", 3);
+            query.find({
+                success: function (list) {
+
+                    for (var a = 0; a < list.length;a++) {
+                      console.log(list)
+                        var obj = list[a];
+                      console.log(obj)
+                        var res = obj.get('GachaCard10');
+                        var modelid = obj.get('CardModelID');
+                        var gacha1 = obj.get('freeGachaCard');
+                        var sale = obj.get('Sale');
+                        var id = obj.get('inviteCode');
+                        var va = obj.get('Valuable');
+                        var price = obj.get('price');
+                        var memo = obj.get('memo');
+                        var modellist = modelid.toString().split(',');
+                        var name = '</br>';
+                        if (sale)
+                        innerhtml += "<div class ='col-md-4 '> <div class='panel panel-danger'> <div class='panel-heading'>  <span class='label label-default'>4星x"+va+"</span>&nbsp;<span class='label label-danger '>已賣出</span><div class='text-right'>編號:"+id+"</div></div>"
+                        else if(memo)
+                        innerhtml += "<div class ='col-md-4 '> <div class='panel panel-info'> <div class='panel-heading'>  <span class='label label-default'>4星x"+va+"</span>&nbsp;<span class='label label-danger '>"+memo+"</span><div class='text-right'>編號:"+id+"</div></div>"
+                        else
+                        innerhtml += "<div class ='col-md-4 '> <div class='panel panel-success'> <div class='panel-heading'>  <span class='label label-info'>4星x"+va+"</span>&nbsp;<span class='label label-success '>尚未賣出</span><div class='text-right'>編號:"+id+"</div></div>"
+
+                        if(gacha1.substring(0, 1) == "4"){
+                                innerhtml +=  "<img src='http://shironeko.appbako.com/wiki/src/img/char/thum/card_"
+                                  + modellist[1] + "_0.png'>";
+                              name += gacha1 +"</br>"
+                                }
+                                    for(var i=0;i<10;i++)
+                                    {
+                                        console.log(res.result.userCards[i])
+                                        if(res.result.userCards[i].rar == '4')
+                                          {
+                                            innerhtml +=
+                                          "<img src='http://shironeko.appbako.com/wiki/src/img/char/thum/card_"
+                                          + res.result.userCards[i].modelId + "_0.png'>"
+
+                                           name += res.result.userCards[i].rar + "★ " + res.result.userCards[i].preName + res.result.userCards[i].name +"</br>"
+                                          }
+                                    }
+                                    innerhtml += name + "<h4 class='text-right' style='color:red'>$"+price+"</h4></div></div>";
+
+
+
+
+
+
+                    }
+                    $('#test').html(innerhtml);
+                    console.log(innerhtml)
+                },
+                error: function(error) {
+        console.log(error)
+        }
+            });
+
+
+
+        </script>
+
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" style="color:white; font-family: Microsoft JhengHei;">玩家自賣 活動石 首10抽帳號</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+          <div class="panel panel-info">
+        <div class="panel-heading"><h4 style="font-weight:bold">商品介紹</h4></div>
+            <div class="panel-body">
+            <h5 style="font-weight:bold">  各式首抽帳號(0進度)</br></br>
+              右側帳號為首抽後,</br>打活動關卡領石頭首(10+1)抽</br>
+              <h style='color:red'>皆為0進度</h>,</br>可議價 歡迎參考選購</h5>
+
+              <a href='http://www.8591.com.tw/mallList-wareDetail.html?id=2200869073'>  <h4 style="font-weight:bold">8591賣場</h4></a>
+
+            </div>
+          </div>
+
+
+          <div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h4 style="font-weight:bold">商品交易方式</h4></div>
+
+  <ul class="list-group">
+    <li class="list-group-item"><h5 style="font-weight:bold">1.選定商品後聯絡賣家,</br>並提供商品編號</h5></li>
+    <li class="list-group-item"><h5 style="font-weight:bold">2.賣家提供8591專屬賣場連結</h5></li>
+    <li class="list-group-item"><h5 style="font-weight:bold">3.於8591交易完成後,互給評價即完成</h5></li>
+  </ul>
+</div>
+
+
+    <div class="panel panel-info">
+  <div class="panel-heading"><h4 style="font-weight:bold">賣家聯絡方式</h4></div>
+      <div class="panel-body">
+
+      <h5 style="font-weight:bold">  (Mr.Martin)</br>Line : uncle.martin</h5></br></br>
+      <h5 style="font-weight:bold">  (飯糰超人)</br>Line : cooper.god</h5></br></br>
+
+
+      <h5 style="font-weight:bold">  或下標後透過8591聯絡方式聯絡</h5>
+      </div>
+    </div>
+        </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-sm-9 col-sm-offset-4 col-md-9 col-md-offset-2 main ">
+
+<div id="test"></div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+</html>
