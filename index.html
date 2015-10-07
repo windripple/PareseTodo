@@ -17,18 +17,25 @@
     <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
-
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
     <script src="js/vendor/holder.min.js"></script>
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/ie-emulation-modes-warning.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
-
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   </head>
 
   <body>
+
     <script>
+
+    $(function() {
+      $( "#tabs" ).tabs();
+    });
+
+
             Parse.$ = jQuery;
             Parse.initialize("S1WbGYDwCZtGgSvEoGTrHSm8JIVldotvqI1CDWsH", "gmoq5DwjOOom08opIeeLFx1MGvzOpoydQ4EuxZ3P");
 
@@ -88,6 +95,70 @@
 
                     }
                     $('#test').html(innerhtml);
+                    console.log(innerhtml)
+                },
+                error: function(error) {
+        console.log(error)
+        }
+            });
+
+
+            var innerhtml2 = '';
+            var usd = Parse.Object.extend("userdata002");
+            var query = new Parse.Query(usd);
+            query.descending("Valuable");
+            query.limit(10000);
+            query.greaterThanOrEqualTo("Valuable", 4);
+            query.find({
+                success: function (list) {
+
+                    for (var a = 0; a < list.length;a++) {
+                      console.log(list)
+                        var obj = list[a];
+                      console.log(obj)
+                        var res = obj.get('GachaCard10');
+                        var modelid = obj.get('CardModelID');
+                        var gacha1 = obj.get('freeGachaCard');
+                        var sale = obj.get('Sale');
+                        var id = obj.get('inviteCode');
+                        var va = obj.get('Valuable');
+                        var price = obj.get('price');
+                        var memo = obj.get('memo');
+                        var modellist = modelid.toString().split(',');
+                        var name = '</br>';
+                        if (sale)
+                        innerhtml2 += "<div class ='col-md-4 '> <div class='panel panel-danger'> <div class='panel-heading'>  <span class='label label-default'>4星x"+va+"</span>&nbsp;<span class='label label-danger '>已賣出</span><div class='text-right'>編號:"+id+"</div></div>"
+                        else if(memo)
+                        innerhtml2 += "<div class ='col-md-4 '> <div class='panel panel-info'> <div class='panel-heading'>  <span class='label label-default'>4星x"+va+"</span>&nbsp;<span class='label label-danger '>"+memo+"</span><div class='text-right'>編號:"+id+"</div></div>"
+                        else
+                        innerhtml2 += "<div class ='col-md-4 '> <div class='panel panel-success'> <div class='panel-heading'>  <span class='label label-info'>4星x"+va+"</span>&nbsp;<span class='label label-success '>尚未賣出</span><div class='text-right'>編號:"+id+"</div></div>"
+
+                        if(gacha1.substring(0, 1) == "4"){
+                                innerhtml2 +=  "<img src='http://shironeko.appbako.com/wiki/src/img/char/thum/card_"
+                                  + modellist[1] + "_0.png'>";
+                              name += gacha1 +"</br>"
+                                }
+                                    for(var i=0;i<10;i++)
+                                    {
+                                        console.log(res.result.userCards[i])
+                                        if(res.result.userCards[i].rar == '4')
+                                          {
+                                            innerhtml2 +=
+                                          "<img src='http://shironeko.appbako.com/wiki/src/img/char/thum/card_"
+                                          + res.result.userCards[i].modelId + "_0.png'>"
+
+                                           name += res.result.userCards[i].rar + "★ " + res.result.userCards[i].preName + res.result.userCards[i].name +"</br>"
+                                          }
+                                    }
+                                    innerhtml2 += name + "<h4 class='text-right' style='color:red'>$"+price+"</h4></div></div>";
+
+
+
+
+
+
+                    }
+                    $('#test2').html(innerhtml2);
                     console.log(innerhtml)
                 },
                 error: function(error) {
@@ -161,7 +232,21 @@
 
         <div class="col-sm-9 col-sm-offset-4 col-md-9 col-md-offset-2 main ">
 
-<div id="test"></div>
+        <div id="tabs">
+        <ul>
+          <li><a href="#test2">藍寶堅尼區</a></li>
+          <li><a href="#test">法拉利區</a></li>
+
+        </ul>
+        <div id="test">
+
+        </div>
+        <div id="test2">
+          </div>
+
+      </div>
+    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
