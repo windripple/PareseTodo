@@ -28,7 +28,14 @@
   </head>
 
   <body>
-
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=124600907565599";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <script>
 
     $(function() {
@@ -238,6 +245,8 @@
           <li><a href="#test" style="font-weight:bold; font-family: Microsoft JhengHei;">首抽帳號(4星x3)</a></li>
           <li><a href="#event" style="font-weight:bold; font-family: Microsoft JhengHei;color:red">雙十國慶促銷</a></li>
 
+          <li><a href="#comments" style="font-weight:bold; font-family: Microsoft JhengHei;color:red">留言給我們</a></li>
+
         </ul>
         <div id="test"></div>
         <div id="test2"></div>
@@ -252,6 +261,10 @@
         </div>
         <div id="event">
           <img src = "img/event.PNG"/>
+        </div>
+
+        <div id="comments">
+        <div class="fb-comments" data-href="http://windripple.github.io/PareseTodo/" data-numposts="5"></div>
         </div>
 
       </div>
